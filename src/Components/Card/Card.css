@@ -25,22 +25,30 @@
     margin: 10px 0;
 }
 
-.card__title .card__price {
+.image__container .card__price {
     font-weight: bold;
 }
 
 .image__container {
     margin: 0 auto;
+    position: relative;
 }
 
 .image__container img {
     width: 100%;
     object-fit: cover;
+    aspect-ratio: 1 / 1;
     border-radius: 4px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
+}
+
+.btn-container img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
 }
 
 .btn-container {
@@ -50,17 +58,26 @@
 }
 
 .card__price {
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+    background-color: rgb(227, 112, 30);
     text-align: center;
-    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 
 .card__badge {
     position: absolute;
     top: 8px;
-    right: 8px;
+    right: 10px;
     z-index: 1;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     background-color: rgb(227, 112, 30);
     border-radius: 50%;
     transform: translate(20px, -20px) scale(1);
@@ -68,7 +85,7 @@
     font-weight: bold;
     text-align: center;
     border: 2px solid rgb(227, 112, 30);
-    font-size: 20px;
+    font-size: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
