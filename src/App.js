@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
-import Card from "./Components/Card/Card";
-import Cart from "./Components/Cart/Cart";
 import CartComponent from "./Components/CartComponent/CartComponent";
+import Dashboard from "./Components/Dashboard";
+import Loading from "./Components/Loading";
 const { getData } = require("./db/db");
 const foods = getData();
 
@@ -10,7 +11,7 @@ const tele = window.Telegram.WebApp;
 
 function App() {
     const [cartItems, setCartItems] = useState([]);
-    const [modal, setModal] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         tele.ready();
@@ -49,39 +50,37 @@ function App() {
     };
 
     const onCheckout = () => {
-        // tele.MainButton.text = "Pay :)";
-        // tele.MainButton.show();
-        setModal(true);
+        navigate("/cart");
     };
 
-    console.log(modal);
-
     return (
-        <>
-            <h1 className="heading">ASICXchange Store</h1>
-            <Cart cartItems={cartItems} onCheckout={onCheckout} />
-            <div className="cards__container">
-                {foods.map((food) => {
-                    return (
-                        <Card
-                            food={food}
+        <Suspense fallback={<Loading />}>
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <Dashboard
+                            foods={foods}
+                            onRemove={onRemove}
+                            onAdd={onAdd}
+                            onCheckout={onCheckout}
                             cartItems={cartItems}
-                            key={food.id}
+                        />
+                    }
+                />
+                <Route
+                    path="/cart"
+                    element={
+                        <CartComponent
+                            cartItems={cartItems}
                             onAdd={onAdd}
                             onRemove={onRemove}
+                            setCartItems={setCartItems}
                         />
-                    );
-                })}
-            </div>
-            <CartComponent
-                cartItems={cartItems}
-                modal={modal}
-                onAdd={onAdd}
-                onRemove={onRemove}
-                setCartItems={setCartItems}
-                setModal={setModal}
-            />
-        </>
+                    }
+                />
+            </Routes>
+        </Suspense>
     );
 }
 

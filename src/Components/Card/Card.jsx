@@ -3,8 +3,10 @@ import Button from "../Button/Button";
 import addIcon from "../../images/icon/add-cart.png";
 import deleteIcon from "../../images/icon/delete-cart.png";
 import "./Card.css";
+import { useState } from "react";
 
 function Card({ food, onAdd, onRemove, cartItems }) {
+    const [state, setState] = useState(false);
     const { title, Image, price, id } = food;
     const count = cartItems.find((x) => x.id === food.id);
 
@@ -13,6 +15,13 @@ function Card({ food, onAdd, onRemove, cartItems }) {
     };
     const handleDecrement = () => {
         onRemove(food);
+    };
+
+    const onClick = () => {
+        setState(true);
+        setTimeout(() => {
+            setState(false);
+        }, 2000);
     };
 
     return (
@@ -30,7 +39,7 @@ function Card({ food, onAdd, onRemove, cartItems }) {
                 variants={{
                     offscreen: {
                         opacity: 0,
-                        y: 200,
+                        y: 100,
                     },
                     onscreen: {
                         opacity: 1,
@@ -39,12 +48,17 @@ function Card({ food, onAdd, onRemove, cartItems }) {
                             type: "spring",
                             bounce: 0.3,
                             duration: 1.5,
-                            delay: 0.5 + `${id % 6}` / 10,
+                            delay: 0.5 + `${id % 7}` / 10,
                         },
                     },
                 }}
             >
-                <div className="card" key={id}>
+                <div
+                    onClick={onClick}
+                    id={state ? "card rotete" : "card"}
+                    className="card"
+                    key={id}
+                >
                     <span
                         className={`${
                             count?.quantity
@@ -55,14 +69,19 @@ function Card({ food, onAdd, onRemove, cartItems }) {
                         {count?.quantity}
                     </span>
                     <div className="image__container">
-                        <img
-                            loading="lazy"
-                            decoding="async"
-                            width={150}
-                            height={150}
-                            src={Image}
-                            alt={title}
-                        />
+                        <motion.div
+                            whileHover={{ scale: 1.3, rotate: -20 }}
+                            whileTap={{ scale: 1.3, rotate: -20 }}
+                        >
+                            <img
+                                loading="lazy"
+                                decoding="async"
+                                width={150}
+                                height={150}
+                                src={Image}
+                                alt={title}
+                            />
+                        </motion.div>
                         <span className="card__price">{price} $</span>
                     </div>
                     <h4 className="card__title">{title}</h4>
