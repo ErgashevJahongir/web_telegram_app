@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Card from "./Components/Card/Card";
 import Cart from "./Components/Cart/Cart";
+import CartComponent from "./Components/CartComponent/CartComponent";
 const { getData } = require("./db/db");
 const foods = getData();
 
@@ -9,10 +10,13 @@ const tele = window.Telegram.WebApp;
 
 function App() {
     const [cartItems, setCartItems] = useState([]);
+    const [modal, setModal] = useState(false);
 
     useEffect(() => {
         tele.ready();
     });
+
+    console.log(cartItems);
 
     const onAdd = (food) => {
         const exist = cartItems.find((x) => x.id === food.id);
@@ -45,9 +49,12 @@ function App() {
     };
 
     const onCheckout = () => {
-        tele.MainButton.text = "Pay :)";
-        tele.MainButton.show();
+        // tele.MainButton.text = "Pay :)";
+        // tele.MainButton.show();
+        setModal(true);
     };
+
+    console.log(modal);
 
     return (
         <>
@@ -58,6 +65,7 @@ function App() {
                     return (
                         <Card
                             food={food}
+                            cartItems={cartItems}
                             key={food.id}
                             onAdd={onAdd}
                             onRemove={onRemove}
@@ -65,6 +73,14 @@ function App() {
                     );
                 })}
             </div>
+            <CartComponent
+                cartItems={cartItems}
+                modal={modal}
+                onAdd={onAdd}
+                onRemove={onRemove}
+                setCartItems={setCartItems}
+                setModal={setModal}
+            />
         </>
     );
 }

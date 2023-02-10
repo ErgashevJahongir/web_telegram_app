@@ -1,20 +1,17 @@
-import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Button from "../Button/Button";
 import addIcon from "../../images/icon/add-cart.png";
 import deleteIcon from "../../images/icon/delete-cart.png";
 import "./Card.css";
 
-function Card({ food, onAdd, onRemove }) {
-    const [count, setCount] = useState(0);
+function Card({ food, onAdd, onRemove, cartItems }) {
     const { title, Image, price, id } = food;
+    const count = cartItems.find((x) => x.id === food.id);
 
     const handleIncrement = () => {
-        setCount(count + 1);
         onAdd(food);
     };
     const handleDecrement = () => {
-        setCount(count - 1);
         onRemove(food);
     };
 
@@ -27,6 +24,7 @@ function Card({ food, onAdd, onRemove }) {
                 once: true,
                 amount: 0.8,
             }}
+            key={id}
         >
             <motion.div
                 variants={{
@@ -40,7 +38,7 @@ function Card({ food, onAdd, onRemove }) {
                         transition: {
                             type: "spring",
                             bounce: 0.3,
-                            duration: 2,
+                            duration: 1.5,
                             delay: 0.5 + `${id % 6}` / 10,
                         },
                     },
@@ -49,10 +47,12 @@ function Card({ food, onAdd, onRemove }) {
                 <div className="card" key={id}>
                     <span
                         className={`${
-                            count !== 0 ? "card__badge" : "card__badge--hidden"
+                            count?.quantity
+                                ? "card__badge"
+                                : "card__badge--hidden"
                         }`}
                     >
-                        {count}
+                        {count?.quantity}
                     </span>
                     <div className="image__container">
                         <img
@@ -81,7 +81,7 @@ function Card({ food, onAdd, onRemove }) {
                             type={"add"}
                             onClick={handleIncrement}
                         />
-                        {count !== 0 ? (
+                        {count?.quantity ? (
                             <Button
                                 title={
                                     <img

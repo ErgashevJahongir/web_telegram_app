@@ -1,0 +1,112 @@
+.cart__component {
+    width: 100vw;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(19, 19, 52);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 20px;
+}
+
+.cart-container {
+    margin: 0 10px;
+    max-width: 600px;
+    width: 100%;
+    padding: 20px 10px;
+    border: 1px solid #e0c521;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.cart-container table {
+    width: 100%;
+}
+
+.cart-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 20px 30px;
+}
+
+.cart-title span {
+    color: tomato;
+}
+
+.cart-container table thead {
+    border-bottom: 2px solid #e0c521;
+}
+
+.cart-container table thead th {
+    padding-bottom: 15px;
+}
+
+.cart-container img {
+    width: 50px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.cartItem {
+    text-align: center;
+    border-bottom: 1px solid #e0c521;
+}
+
+.cartItem td {
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.cart-buuton-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-buuton-container button {
+    padding: 5px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: transparent;
+    color: #fff;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.total-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 20px 0;
+}
+
+@media screen and (max-width: 600px) {
+    .cart-buuton-container button {
+        padding: 2px 6px;
+    }
+}
