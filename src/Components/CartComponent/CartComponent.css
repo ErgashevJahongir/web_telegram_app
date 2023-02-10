@@ -1,4 +1,4 @@
-.cart__component {
+.cart--component {
     width: 100vw;
     height: 100vh;
     position: sticky;
@@ -15,7 +15,20 @@
 .close {
     position: absolute;
     right: 15px;
-    top: 20px;
+    top: 10px;
+    border: none;
+    padding: 5px 10px 7px 9px;
+    border-radius: 50%;
+    background-color: tomato;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
 
 .cart-container {
@@ -103,6 +116,23 @@
     align-items: center;
     justify-content: space-between;
     margin: 20px 20px 0;
+}
+
+.buy {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.buy button {
+    padding: 6px 40px 5px;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: #e0c521;
+    border: none;
+    outline: none;
+    margin-right: 10px;
 }
 
 @media screen and (max-width: 600px) {

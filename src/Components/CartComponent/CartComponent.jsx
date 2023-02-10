@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Button from "../Button/Button";
 import "./CartComponent.css";
 
 const CartComponent = ({
@@ -15,9 +16,11 @@ const CartComponent = ({
     };
     return (
         <div
-            className="cart__component"
+            className="cart--component"
             style={
-                modal ? { opacity: 1, zIndex: 9 } : { opacity: 0, zIndex: -1 }
+                modal
+                    ? { opacity: 1, zIndex: 9, display: "flex" }
+                    : { opacity: 0, zIndex: -1, display: "none" }
             }
         >
             <button
@@ -25,7 +28,7 @@ const CartComponent = ({
                 type="button"
                 onClick={() => setModal(false)}
             >
-                Close
+                X
             </button>
             <motion.div
                 className="cart-container"
@@ -40,11 +43,11 @@ const CartComponent = ({
                     variants={{
                         offscreen: {
                             opacity: 0,
-                            // y: 200,
+                            scale: 0.8,
                         },
                         onscreen: {
                             opacity: 1,
-                            // y: 0,
+                            scale: 1,
                             transition: {
                                 type: "spring",
                                 bounce: 0.3,
@@ -135,6 +138,9 @@ const CartComponent = ({
                                 <div className="total-price">
                                     <h3>Total price: </h3>
                                     <h3>{totalPrice.toFixed(2)} $</h3>
+                                </div>
+                                <div className="buy">
+                                    <button>Buy</button>
                                 </div>
                             </div>
                         ) : (
