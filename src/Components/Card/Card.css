@@ -9,7 +9,7 @@
     max-width: 300px;
     max-height: 450px;
     border: 1px solid var(--primary-color);
-    padding: 0.5rem 0.3rem;
+    padding: 2px;
     margin: 13px 10px;
     position: relative;
     border-radius: 8px;
@@ -46,35 +46,6 @@
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
-}
-
-/* .card .image__container img {
-    transform: scale(1) rotate(0);
-    -webkit-transform: scale(1) rotate(0);
-    -moz-transform: scale(1) rotate(0);
-    -ms-transform: scale(1) rotate(0);
-    -o-transform: scale(1) rotate(0);
-} */
-
-/* .card:hover .image__container img {
-    transform: scale(1.2) rotate(10deg);
-    -webkit-transform: scale(1.2) rotate(10deg);
-    -moz-transform: scale(1.2) rotate(10deg);
-    -ms-transform: scale(1.2) rotate(10deg);
-    -o-transform: scale(1.2) rotate(10deg);
-} */
-
-.rotete .image__container img {
-    transition: all 0.3s;
-    transform: scale(1.2) rotate(10deg);
-    -webkit-transform: scale(1.2) rotate(10deg);
-    -moz-transform: scale(1.2) rotate(10deg);
-    -ms-transform: scale(1.2) rotate(10deg);
-    -o-transform: scale(1.2) rotate(10deg);
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -ms-transition: all 0.3s;

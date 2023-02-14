@@ -1,5 +1,5 @@
 .cart--component {
-    min-width: 100vw;
+    min-width: 95vw;
     min-height: 100vh;
     padding: 50px 0;
     background-color: rgb(20, 20, 65);
@@ -28,7 +28,7 @@
 }
 
 .cart-container {
-    margin: 0 15px;
+    margin: 0 10px;
     max-width: 600px;
     width: 100%;
     padding: 20px 10px;
@@ -53,6 +53,7 @@
 
 .cart-title span {
     color: tomato;
+    cursor: pointer;
 }
 
 .cart-container table thead {

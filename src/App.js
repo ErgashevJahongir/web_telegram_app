@@ -1,23 +1,28 @@
+import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect, Suspense } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { getMainer } from "./Api/Axios";
 import "./App.css";
 import CartComponent from "./Components/CartComponent/CartComponent";
 import Dashboard from "./Components/Dashboard";
 import Loading from "./Components/Loading";
-const { getData } = require("./db/db");
-const foods = getData();
+import Product from "./Components/Product/Product";
 
 const tele = window.Telegram.WebApp;
 
 function App() {
     const [cartItems, setCartItems] = useState([]);
     const navigate = useNavigate();
+    const {
+        data: mainer,
+        isLoading,
+        isError,
+    } = useQuery(["mainer"], () => getMainer());
+    console.log(mainer);
 
     useEffect(() => {
         tele.ready();
     });
-
-    console.log(cartItems);
 
     const onAdd = (food) => {
         const exist = cartItems.find((x) => x.id === food.id);
@@ -53,6 +58,10 @@ function App() {
         navigate("/cart");
     };
 
+    if (isLoading) {
+        return <Loading />;
+    }
+
     return (
         <Suspense fallback={<Loading />}>
             <Routes>
@@ -60,7 +69,7 @@ function App() {
                     path="/"
                     element={
                         <Dashboard
-                            foods={foods}
+                            mainer={mainer}
                             onRemove={onRemove}
                             onAdd={onAdd}
                             onCheckout={onCheckout}
@@ -78,6 +87,10 @@ function App() {
                             setCartItems={setCartItems}
                         />
                     }
+                />
+                <Route
+                    path="/product/:productId"
+                    element={<Product mainer={mainer} onAdd={onAdd} />}
                 />
             </Routes>
         </Suspense>

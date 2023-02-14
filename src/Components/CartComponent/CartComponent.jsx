@@ -50,7 +50,7 @@ const CartComponent = ({ cartItems, onRemove, onAdd, setCartItems }) => {
                                                         decoding="async"
                                                         width={100}
                                                         height={100}
-                                                        src={item.Image}
+                                                        src={item.photo1}
                                                         alt={item.title}
                                                     />
                                                 </td>

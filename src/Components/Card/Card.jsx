@@ -3,25 +3,19 @@ import Button from "../Button/Button";
 import addIcon from "../../images/icon/add-cart.png";
 import deleteIcon from "../../images/icon/delete-cart.png";
 import "./Card.css";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Card({ food, onAdd, onRemove, cartItems }) {
-    const [state, setState] = useState(false);
-    const { title, Image, price, id } = food;
+    const { title, photo1, price, id } = food;
     const count = cartItems.find((x) => x.id === food.id);
+    console.log(food);
 
     const handleIncrement = () => {
         onAdd(food);
     };
+
     const handleDecrement = () => {
         onRemove(food);
-    };
-
-    const onClick = () => {
-        setState(true);
-        setTimeout(() => {
-            setState(false);
-        }, 2000);
     };
 
     return (
@@ -53,12 +47,7 @@ function Card({ food, onAdd, onRemove, cartItems }) {
                     },
                 }}
             >
-                <div
-                    onClick={onClick}
-                    id={state ? "card rotete" : "card"}
-                    className="card"
-                    key={id}
-                >
+                <div id={"card"} className="card" key={id}>
                     <span
                         className={`${
                             count?.quantity
@@ -78,13 +67,16 @@ function Card({ food, onAdd, onRemove, cartItems }) {
                                 decoding="async"
                                 width={150}
                                 height={150}
-                                src={Image}
+                                src={photo1}
                                 alt={title}
                             />
                         </motion.div>
                         <span className="card__price">{price} $</span>
                     </div>
                     <h4 className="card__title">{title}</h4>
+                    <Link to={`/product/${id}`} className="card__title">
+                        More...
+                    </Link>
                     <div className="btn-container">
                         <Button
                             title={
