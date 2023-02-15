@@ -56,7 +56,7 @@ const CartComponent = ({ cartItems, onRemove, onAdd, setCartItems }) => {
                                                 </td>
                                                 <td>{item.title}</td>
                                                 <td>
-                                                    {item.price.toFixed(2)} $
+                                                    {item.price?.toFixed(2)} $
                                                 </td>
                                                 <td>
                                                     <div className="cart-buuton-container">

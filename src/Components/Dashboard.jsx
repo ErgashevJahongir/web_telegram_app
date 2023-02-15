@@ -1,5 +1,6 @@
-import Card from "./Card/Card";
-import Cart from "./Cart/Cart";
+import { lazy } from "react";
+const Card = lazy(() => import("./Card/Card"));
+const Cart = lazy(() => import("./Cart/Cart"));
 
 const Dashboard = ({ cartItems, onCheckout, onAdd, onRemove, mainer }) => {
     console.log(mainer);

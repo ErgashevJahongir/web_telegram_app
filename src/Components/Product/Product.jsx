@@ -1,7 +1,8 @@
 import moment from "moment";
+import { lazy } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Button from "../Button/Button";
 import "./product.css";
+const Button = lazy(() => import("../Button/Button"));
 
 const Product = ({ mainer, onAdd }) => {
     const { productId } = useParams();
@@ -10,7 +11,7 @@ const Product = ({ mainer, onAdd }) => {
     const product = productArray[0];
     const tgaccount = product.for_more_info.split(" ");
     return (
-        <div>
+        <div style={{ margin: "0 auto", maxWidth: 600 }}>
             <div className="backButton__div">
                 <button type="button" onClick={() => navigate("/")}>
                     <span>&larr;</span> Back
@@ -33,14 +34,6 @@ const Product = ({ mainer, onAdd }) => {
                     <div className="product__info">
                         <div className="product__info-item">
                             <div className="">
-                                <h4>Price: </h4>
-                            </div>{" "}
-                            <div>
-                                <p>{product.price} $</p>
-                            </div>
-                        </div>
-                        <div className="product__info-item">
-                            <div className="">
                                 <h4>Name: </h4>
                             </div>{" "}
                             <div>
@@ -61,6 +54,14 @@ const Product = ({ mainer, onAdd }) => {
                             </div>{" "}
                             <div>
                                 <p>{product.brand}</p>
+                            </div>
+                        </div>
+                        <div className="product__info-item">
+                            <div className="">
+                                <h4>Price: </h4>
+                            </div>{" "}
+                            <div>
+                                <p>{product.price} $</p>
                             </div>
                         </div>
                         <div className="product__info-item">
@@ -132,7 +133,7 @@ const Product = ({ mainer, onAdd }) => {
                             <Button
                                 title={"Add to cart"}
                                 type={"add"}
-                                onClick={() => onAdd(mainer)}
+                                onClick={() => onAdd(product)}
                             />
                         </div>
                     </div>

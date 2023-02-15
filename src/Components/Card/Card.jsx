@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import Button from "../Button/Button";
+import { Link } from "react-router-dom";
+import { lazy } from "react";
 import addIcon from "../../images/icon/add-cart.png";
 import deleteIcon from "../../images/icon/delete-cart.png";
 import "./Card.css";
-import { Link } from "react-router-dom";
+const Button = lazy(() => import("../Button/Button"));
 
 function Card({ food, onAdd, onRemove, cartItems }) {
     const { title, photo1, price, id } = food;
@@ -74,8 +75,8 @@ function Card({ food, onAdd, onRemove, cartItems }) {
                         <span className="card__price">{price} $</span>
                     </div>
                     <h4 className="card__title">{title}</h4>
-                    <Link to={`/product/${id}`} className="card__title">
-                        More...
+                    <Link to={`/product/${id}`} className="card__moreinfo">
+                        More info...
                     </Link>
                     <div className="btn-container">
                         <Button

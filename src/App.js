@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { getMainer } from "./Api/Axios";
 import "./App.css";
-import CartComponent from "./Components/CartComponent/CartComponent";
-import Dashboard from "./Components/Dashboard";
-import Loading from "./Components/Loading";
-import Product from "./Components/Product/Product";
+const CartComponent = lazy(() =>
+    import("./Components/CartComponent/CartComponent")
+);
+const Dashboard = lazy(() => import("./Components/Dashboard"));
+const Loading = lazy(() => import("./Components/Loading"));
+const Product = lazy(() => import("./Components/Product/Product"));
 
 const tele = window.Telegram.WebApp;
 
