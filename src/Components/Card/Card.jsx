@@ -9,7 +9,6 @@ const Button = lazy(() => import("../Button/Button"));
 function Card({ food, onAdd, onRemove, cartItems }) {
     const { title, photo1, price, id } = food;
     const count = cartItems.find((x) => x.id === food.id);
-    console.log(food);
 
     const handleIncrement = () => {
         onAdd(food);

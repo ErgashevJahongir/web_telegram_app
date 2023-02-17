@@ -1,8 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import "./CartComponent.css";
 
-const CartComponent = ({ cartItems, onRemove, onAdd, setCartItems }) => {
-    const navigate = useNavigate("/");
+const CartComponent = ({
+    cartItems,
+    onRemove,
+    onAdd,
+    setCartItems,
+    userId,
+}) => {
+    const navigate = useNavigate();
     const totalPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
     const deleteAll = () => {
         setCartItems([]);
@@ -14,7 +20,7 @@ const CartComponent = ({ cartItems, onRemove, onAdd, setCartItems }) => {
                 <button
                     className="close"
                     type="button"
-                    onClick={() => navigate("/")}
+                    onClick={() => navigate(`/dashboard/${userId}`)}
                 >
                     X
                 </button>

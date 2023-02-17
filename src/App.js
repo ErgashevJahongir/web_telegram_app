@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect, Suspense, lazy } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { getMainer } from "./Api/Axios";
 import "./App.css";
 const CartComponent = lazy(() =>
@@ -14,13 +14,11 @@ const tele = window.Telegram.WebApp;
 
 function App() {
     const [cartItems, setCartItems] = useState([]);
+    const [userId, setUserId] = useState(
+        sessionStorage.getItem("userId") || null
+    );
     const navigate = useNavigate();
-    const {
-        data: mainer,
-        isLoading,
-        isError,
-    } = useQuery(["mainer"], () => getMainer());
-    console.log(mainer);
+    const { data: mainer, isLoading } = useQuery(["mainer"], () => getMainer());
 
     useEffect(() => {
         tele.ready();
@@ -68,7 +66,7 @@ function App() {
         <Suspense fallback={<Loading />}>
             <Routes>
                 <Route
-                    path="/"
+                    path="/dashboard/:userId"
                     element={
                         <Dashboard
                             mainer={mainer}
@@ -76,6 +74,7 @@ function App() {
                             onAdd={onAdd}
                             onCheckout={onCheckout}
                             cartItems={cartItems}
+                            setUserId={setUserId}
                         />
                     }
                 />
@@ -87,12 +86,19 @@ function App() {
                             onAdd={onAdd}
                             onRemove={onRemove}
                             setCartItems={setCartItems}
+                            userId={userId}
                         />
                     }
                 />
                 <Route
                     path="/product/:productId"
-                    element={<Product mainer={mainer} onAdd={onAdd} />}
+                    element={
+                        <Product
+                            mainer={mainer}
+                            onAdd={onAdd}
+                            userId={userId}
+                        />
+                    }
                 />
             </Routes>
         </Suspense>

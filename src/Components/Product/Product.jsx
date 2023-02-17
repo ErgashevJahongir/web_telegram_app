@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./product.css";
 const Button = lazy(() => import("../Button/Button"));
 
-const Product = ({ mainer, onAdd }) => {
+const Product = ({ mainer, onAdd, userId }) => {
     const { productId } = useParams();
     const navigate = useNavigate();
     const productArray = mainer.filter((item) => item.id == productId);
@@ -13,7 +13,10 @@ const Product = ({ mainer, onAdd }) => {
     return (
         <div style={{ margin: "0 auto", maxWidth: 600 }}>
             <div className="backButton__div">
-                <button type="button" onClick={() => navigate("/")}>
+                <button
+                    type="button"
+                    onClick={() => navigate(`/dashboard/${userId}`)}
+                >
                     <span>&larr;</span> Back
                 </button>
             </div>
