@@ -44,10 +44,27 @@
     margin: 0 10px;
 }
 
+.addButton button {
+    line-height: 29px;
+}
+
 .product__info-item {
     border-bottom: 1px solid #e0c521;
     padding: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+}
+
+.product__info .btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+.product__info .btn-container img {
+    width: 24px;
+    height: 24px;
 }

@@ -1,6 +1,8 @@
 import moment from "moment";
 import { lazy } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import like from "../../images/icon/thumbs-up-line-icon.svg";
+import dislike from "../../images/icon/dislike-icon.svg";
 import "./product.css";
 const Button = lazy(() => import("../Button/Button"));
 
@@ -132,11 +134,43 @@ const Product = ({ mainer, onAdd, userId }) => {
                                 })}
                             </div>
                         </div>
-                        <div style={{ marginTop: 25 }}>
+                        <div style={{ marginTop: 25 }} className="addButton">
                             <Button
                                 title={"Add to cart"}
                                 type={"add"}
                                 onClick={() => onAdd(product)}
+                            />
+                        </div>
+                        <div className="btn-container">
+                            <Button
+                                title={
+                                    <img
+                                        src={like}
+                                        alt="add card icon"
+                                        loading="lazy"
+                                        decoding="async"
+                                        width={24}
+                                        height={24}
+                                        title="like"
+                                    />
+                                }
+                                type={"add"}
+                                // onClick={handleIncrement}
+                            />
+                            <Button
+                                title={
+                                    <img
+                                        src={dislike}
+                                        alt="add card icon"
+                                        loading="lazy"
+                                        decoding="async"
+                                        width={24}
+                                        height={24}
+                                        title="dislike"
+                                    />
+                                }
+                                type={"remove"}
+                                // onClick={handleDecrement}
                             />
                         </div>
                     </div>
