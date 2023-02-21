@@ -1,8 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect, Suspense, lazy } from "react";
-import { Route, Routes, useNavigate, useParams } from "react-router-dom";
-import { getMainer } from "./Api/Axios";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
+import Order from "./Components/Order/Order";
 const CartComponent = lazy(() =>
     import("./Components/CartComponent/CartComponent")
 );
@@ -17,8 +16,10 @@ function App() {
     const [userId, setUserId] = useState(
         sessionStorage.getItem("userId") || null
     );
+    const [mainer, setMainer] = useState(
+        JSON.parse(sessionStorage.getItem("productMainer")) || []
+    );
     const navigate = useNavigate();
-    const { data: mainer, isLoading } = useQuery(["mainer"], () => getMainer());
 
     useEffect(() => {
         tele.ready();
@@ -58,15 +59,17 @@ function App() {
         navigate("/cart");
     };
 
-    if (isLoading) {
-        return <Loading />;
-    }
-
     return (
         <Suspense fallback={<Loading />}>
             <Routes>
                 <Route
-                    path="/dashboard/:userId"
+                    path="/order/:userId"
+                    element={
+                        <Order setUserId={setUserId} setMainer={setMainer} />
+                    }
+                />
+                <Route
+                    path={`/dashboard`}
                     element={
                         <Dashboard
                             mainer={mainer}
@@ -74,7 +77,6 @@ function App() {
                             onAdd={onAdd}
                             onCheckout={onCheckout}
                             cartItems={cartItems}
-                            setUserId={setUserId}
                         />
                     }
                 />

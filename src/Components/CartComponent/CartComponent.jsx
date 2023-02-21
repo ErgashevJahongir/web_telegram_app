@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
+import { postProduct } from "../../Api/Axios";
 import "./CartComponent.css";
 
 const CartComponent = ({
@@ -14,13 +16,37 @@ const CartComponent = ({
         setCartItems([]);
     };
 
+    const onOrder = async () => {
+        const productList = cartItems.map((item) => item.id);
+        const dataForm = {
+            user_id: userId,
+            products: productList,
+            total_price: totalPrice,
+        };
+        const data = await postProduct(JSON.stringify(dataForm));
+        data.id
+            ? swal({
+                  title: "Done!",
+                  text: "Data saved successfully",
+                  icon: "success",
+                  button: false,
+              })
+            : swal({
+                  title: "Done!",
+                  text: "There was a problem saving the datauser is added to database",
+                  icon: "error",
+                  button: false,
+              });
+        data.id ? setCartItems([]) : console.log("slaom");
+    };
+
     return (
         <div className="cart--component">
             <div className="cart-container">
                 <button
                     className="close"
                     type="button"
-                    onClick={() => navigate(`/dashboard/${userId}`)}
+                    onClick={() => navigate(`/dashboard`)}
                 >
                     X
                 </button>
@@ -104,7 +130,9 @@ const CartComponent = ({
                                 <h3>{totalPrice.toFixed(2)} $</h3>
                             </div>
                             <div className="buy">
-                                <button>Buy</button>
+                                <button type="button" onClick={onOrder}>
+                                    Buy
+                                </button>
                             </div>
                         </div>
                     ) : (

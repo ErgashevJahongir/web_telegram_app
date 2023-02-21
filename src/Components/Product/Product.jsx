@@ -1,9 +1,12 @@
 import moment from "moment";
 import { lazy } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import like from "../../images/icon/thumbs-up-line-icon.svg";
 import dislike from "../../images/icon/dislike-icon.svg";
 import "./product.css";
+import { postDisLike, postLike } from "../../Api/Axios";
+import "react-toastify/dist/ReactToastify.css";
 const Button = lazy(() => import("../Button/Button"));
 
 const Product = ({ mainer, onAdd, userId }) => {
@@ -12,13 +15,33 @@ const Product = ({ mainer, onAdd, userId }) => {
     const productArray = mainer.filter((item) => item.id == productId);
     const product = productArray[0];
     const tgaccount = product.for_more_info.split(" ");
+
+    const handleDisLike = async () => {
+        var bodyFormData = new FormData();
+        bodyFormData.append("user_id", userId);
+        bodyFormData.append("product", product.id);
+        const data = await postDisLike(bodyFormData);
+        data.user ? notifyDisLIke() : notifyDisLIkeError();
+    };
+
+    const handleLike = async () => {
+        var bodyFormData = new FormData();
+        bodyFormData.append("user_id", userId);
+        bodyFormData.append("product", product.id);
+        const data = await postLike(bodyFormData);
+        data.id ? notifyLIke() : notifyLIkeError();
+    };
+
+    const addToCard = () => toast.success("Successfully added to cart! 👌");
+    const notifyLIke = () => toast.success("Saved successfully! 👌");
+    const notifyLIkeError = () => toast.error("Something went wrong!");
+    const notifyDisLIke = () => toast.success("Saved successfully! 👌");
+    const notifyDisLIkeError = () => toast.error("Something went wrong!");
+
     return (
         <div style={{ margin: "0 auto", maxWidth: 600 }}>
             <div className="backButton__div">
-                <button
-                    type="button"
-                    onClick={() => navigate(`/dashboard/${userId}`)}
-                >
+                <button type="button" onClick={() => navigate(`/dashboard`)}>
                     <span>&larr;</span> Back
                 </button>
             </div>
@@ -138,7 +161,10 @@ const Product = ({ mainer, onAdd, userId }) => {
                             <Button
                                 title={"Add to cart"}
                                 type={"add"}
-                                onClick={() => onAdd(product)}
+                                onClick={() => {
+                                    onAdd(product);
+                                    addToCard();
+                                }}
                             />
                         </div>
                         <div className="btn-container">
@@ -155,7 +181,7 @@ const Product = ({ mainer, onAdd, userId }) => {
                                     />
                                 }
                                 type={"add"}
-                                // onClick={handleIncrement}
+                                onClick={handleLike}
                             />
                             <Button
                                 title={
@@ -170,10 +196,11 @@ const Product = ({ mainer, onAdd, userId }) => {
                                     />
                                 }
                                 type={"remove"}
-                                // onClick={handleDecrement}
+                                onClick={handleDisLike}
                             />
                         </div>
                     </div>
+                    <ToastContainer />
                 </div>
             </div>
         </div>

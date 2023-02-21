@@ -1,14 +1,37 @@
-export const getMainer = async () => {
+export const getMainer = async (body) => {
     const res = await fetch(`http://159.203.88.113/api/v1/productlist/`, {
-        method: "get",
+        method: "POST",
+        body: body,
     });
     const data = res.json();
     return data;
 };
 
-export const getPostProduct = async () => {
-    const res = await fetch(`http://159.203.88.113/api/v1/createorder/`, {
-        method: "post",
+export const postLike = async (body) => {
+    const res = await fetch(`http://159.203.88.113/api/v1/like/`, {
+        method: "POST",
+        body: body,
+    });
+    const data = res.json();
+    return data;
+};
+
+export const postDisLike = async (body) => {
+    const res = await fetch(`http://159.203.88.113/api/v1/dislike/`, {
+        method: "POST",
+        body: body,
+    });
+    const data = res.json();
+    return data;
+};
+
+export const postProduct = async (body) => {
+    const res = await fetch(`http://159.203.88.113/api/v1/orders/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: body,
     });
     const data = res.json();
     return data;

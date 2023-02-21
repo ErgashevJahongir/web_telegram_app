@@ -1,21 +1,8 @@
-import { lazy, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { lazy } from "react";
 const Card = lazy(() => import("./Card/Card"));
 const Cart = lazy(() => import("./Cart/Cart"));
 
-const Dashboard = ({
-    cartItems,
-    onCheckout,
-    onAdd,
-    onRemove,
-    mainer,
-    setUserId,
-}) => {
-    const { userId } = useParams();
-    useEffect(() => {
-        setUserId(userId);
-        sessionStorage.setItem("userId", userId);
-    }, []);
+const Dashboard = ({ cartItems, onCheckout, onAdd, onRemove, mainer }) => {
     return (
         <div>
             <h1 className="heading">ASICXchange Store</h1>
