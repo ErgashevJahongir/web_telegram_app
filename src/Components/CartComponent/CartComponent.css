@@ -17,6 +17,7 @@
     border-radius: 50%;
     background-color: tomato;
     color: #fff;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,6 +98,7 @@
     color: #fff;
     margin: 0 5px;
     border-radius: 5px;
+    cursor: pointer;
     border: none;
     outline: none;
     display: flex;
@@ -130,6 +132,7 @@
     border: none;
     outline: none;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {

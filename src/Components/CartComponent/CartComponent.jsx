@@ -37,7 +37,7 @@ const CartComponent = ({
                   icon: "error",
                   button: false,
               });
-        data.id ? setCartItems([]) : console.log("slaom");
+        data.id && setCartItems([]);
     };
 
     return (
