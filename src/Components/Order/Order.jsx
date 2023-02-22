@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import swal from "sweetalert";
 import { getMainer } from "../../Api/Axios";
 import "./order.css";
 
@@ -17,6 +18,8 @@ const Order = ({ setUserId, setMainer }) => {
         if (userId) {
             setUserId(userId);
             sessionStorage.setItem("userId", userId);
+        } else {
+            navigate("/not-found");
         }
     }, []);
 
@@ -33,6 +36,13 @@ const Order = ({ setUserId, setMainer }) => {
             navigate("/dashboard");
             sessionStorage.setItem("productMainer", JSON.stringify(data));
             setMainer(data);
+        } else {
+            swal({
+                title: "Done!",
+                text: "Unfortunately, the product you were looking for was not found. Please wait. Our staff will contact you.",
+                icon: "success",
+                button: false,
+            });
         }
     };
 

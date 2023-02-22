@@ -2,11 +2,11 @@ import moment from "moment";
 import { lazy } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { postDisLike, postLike } from "../../Api/Axios";
 import like from "../../images/icon/thumbs-up-line-icon.svg";
 import dislike from "../../images/icon/dislike-icon.svg";
-import "./product.css";
-import { postDisLike, postLike } from "../../Api/Axios";
 import "react-toastify/dist/ReactToastify.css";
+import "./product.css";
 const Button = lazy(() => import("../Button/Button"));
 
 const Product = ({ mainer, onAdd, userId }) => {

@@ -1,15 +1,14 @@
-import { useState, useEffect, Suspense, lazy } from "react";
+import { useState, Suspense, lazy } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
-import Order from "./Components/Order/Order";
 const CartComponent = lazy(() =>
     import("./Components/CartComponent/CartComponent")
 );
+const NoUser = lazy(() => import("./Components/NoUser/NoUser"));
+const Order = lazy(() => import("./Components/Order/Order"));
 const Dashboard = lazy(() => import("./Components/Dashboard"));
 const Loading = lazy(() => import("./Components/Loading"));
 const Product = lazy(() => import("./Components/Product/Product"));
-
-const tele = window.Telegram.WebApp;
 
 function App() {
     const [cartItems, setCartItems] = useState([]);
@@ -20,10 +19,6 @@ function App() {
         JSON.parse(sessionStorage.getItem("productMainer")) || []
     );
     const navigate = useNavigate();
-
-    useEffect(() => {
-        tele.ready();
-    });
 
     const onAdd = (food) => {
         const exist = cartItems.find((x) => x.id === food.id);
@@ -102,6 +97,8 @@ function App() {
                         />
                     }
                 />
+                <Route path="/not-found" element={<NoUser />} />
+                <Route path="*" element={<NoUser />} />
             </Routes>
         </Suspense>
     );
