@@ -1,5 +1,5 @@
 export const getMainer = async (body) => {
-    const res = await fetch(`http://159.203.88.113/api/v1/productlist/`, {
+    const res = await fetch(`https://159.203.88.113/api/v1/productlist/`, {
         method: "POST",
         body: body,
     });
@@ -8,7 +8,7 @@ export const getMainer = async (body) => {
 };
 
 export const postLike = async (body) => {
-    const res = await fetch(`http://159.203.88.113/api/v1/like/`, {
+    const res = await fetch(`https://159.203.88.113/api/v1/like/`, {
         method: "POST",
         body: body,
     });
@@ -17,7 +17,7 @@ export const postLike = async (body) => {
 };
 
 export const postDisLike = async (body) => {
-    const res = await fetch(`http://159.203.88.113/api/v1/dislike/`, {
+    const res = await fetch(`https://159.203.88.113/api/v1/dislike/`, {
         method: "POST",
         body: body,
     });
@@ -26,7 +26,7 @@ export const postDisLike = async (body) => {
 };
 
 export const postProduct = async (body) => {
-    const res = await fetch(`http://159.203.88.113/api/v1/orders/`, {
+    const res = await fetch(`https://159.203.88.113/api/v1/orders/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
