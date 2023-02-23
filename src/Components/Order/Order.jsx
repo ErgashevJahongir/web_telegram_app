@@ -38,9 +38,9 @@ const Order = ({ setUserId, setMainer }) => {
             setMainer(data);
         } else {
             swal({
-                title: "Done!",
+                title: "Info!",
                 text: "Unfortunately, the product you were looking for was not found. Please wait. Our staff will contact you.",
-                icon: "success",
+                icon: "info",
                 button: false,
             });
         }
