@@ -20,9 +20,8 @@ const barndOption = [
                 style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
                     color: "#000",
-                    fontSize: 18,
+                    fontSize: 17,
                 }}
             >
                 <img
@@ -31,7 +30,6 @@ const barndOption = [
                     width={200}
                     style={{ marginRight: 10, width: 200, height: 40 }}
                 />
-                <span>ALL BRAND</span>
             </span>
         ),
     },
@@ -42,9 +40,8 @@ const barndOption = [
                 style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
                     color: "#000",
-                    fontSize: 18,
+                    fontSize: 17,
                 }}
             >
                 <img
@@ -52,7 +49,6 @@ const barndOption = [
                     alt="whatsminer"
                     style={{ marginRight: 10, width: 200, height: 40 }}
                 />
-                <span>WHATSMINER</span>
             </span>
         ),
     },
@@ -63,9 +59,8 @@ const barndOption = [
                 style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
                     color: "#000",
-                    fontSize: 18,
+                    fontSize: 17,
                 }}
             >
                 <img
@@ -74,7 +69,6 @@ const barndOption = [
                     width={200}
                     style={{ marginRight: 10, width: 200, height: 40 }}
                 />
-                <span>BITMAIN</span>
             </span>
         ),
     },
@@ -85,9 +79,8 @@ const barndOption = [
                 style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
                     color: "#000",
-                    fontSize: 18,
+                    fontSize: 17,
                 }}
             >
                 <img
@@ -96,7 +89,6 @@ const barndOption = [
                     width={200}
                     style={{ marginRight: 10, width: 200, height: 40 }}
                 />
-                <span>CANAAN</span>
             </span>
         ),
     },
@@ -110,9 +102,8 @@ const countOption = [
                 style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
                     color: "#000",
-                    fontSize: 18,
+                    fontSize: 17,
                 }}
             >
                 <img
@@ -132,9 +123,8 @@ const countOption = [
                 style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
                     color: "#000",
-                    fontSize: 18,
+                    fontSize: 17,
                 }}
             >
                 <img
@@ -154,9 +144,8 @@ const countOption = [
                 style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
                     color: "#000",
-                    fontSize: 18,
+                    fontSize: 17,
                 }}
             >
                 <img
