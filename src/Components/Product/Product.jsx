@@ -73,7 +73,7 @@ const Product = ({ mainer, onAdd, userId }) => {
                                 <h4>Model: </h4>
                             </div>{" "}
                             <div>
-                                <p>{product.model1}</p>
+                                <p>{product.model}</p>
                             </div>
                         </div>
                         <div className="product__info-item">
@@ -86,22 +86,6 @@ const Product = ({ mainer, onAdd, userId }) => {
                         </div>
                         <div className="product__info-item">
                             <div className="">
-                                <h4>Price: </h4>
-                            </div>{" "}
-                            <div>
-                                <p>{product.price} $</p>
-                            </div>
-                        </div>
-                        <div className="product__info-item">
-                            <div className="">
-                                <h4>Condition: </h4>
-                            </div>{" "}
-                            <div>
-                                <p>{product.condition}</p>
-                            </div>
-                        </div>
-                        <div className="product__info-item">
-                            <div className="">
                                 <h4>MOQ: </h4>
                             </div>{" "}
                             <div>
@@ -110,10 +94,50 @@ const Product = ({ mainer, onAdd, userId }) => {
                         </div>
                         <div className="product__info-item">
                             <div className="">
-                                <h4>uantity available: </h4>
+                                <h4>Price: </h4>
                             </div>{" "}
                             <div>
-                                <p>{product.moq}</p>
+                                <p>{product.price} $</p>
+                            </div>
+                        </div>
+                        <div className="product__info-item">
+                            <div className="">
+                                <h4></h4>
+                            </div>{" "}
+                            <div>
+                                <p>{product.priceper} $USD / PER</p>
+                            </div>
+                        </div>
+                        <div className="product__info-item">
+                            <div className="">
+                                <h4></h4>
+                            </div>{" "}
+                            <div>
+                                <p>
+                                    {product.price * product.priceper} $USD /
+                                    UNIT
+                                </p>
+                            </div>
+                        </div>
+                        <div className="product__info-item">
+                            <div className="">
+                                <h4></h4>
+                            </div>{" "}
+                            <div>
+                                <p>
+                                    {product.price *
+                                        product.moq *
+                                        product.priceper}{" "}
+                                    $USD / MOQ
+                                </p>
+                            </div>
+                        </div>
+                        <div className="product__info-item">
+                            <div className="">
+                                <h4>Condition: </h4>
+                            </div>{" "}
+                            <div>
+                                <p>{product.condition}</p>
                             </div>
                         </div>
                         <div className="product__info-item">
